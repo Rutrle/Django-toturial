@@ -1,0 +1,3 @@
+
+python -m venv name => creates python virtual enviroment named name
+virtual_enviroment_name\Scripts|activate => activates virtual enviroment on windows     
