@@ -7,3 +7,7 @@ python manage.py makemigrations => prepares migrations
 python manage.py migrate => synchronise database with django
 python manage.py createsuperuser => creates admin
 python manage.py startapp name => creates app with given name
+
+python managege.py shell => starts django shell
+    Model_name.object.all() => prints all objects of given Model_name
+    Model_name.object.create(all parameters filled out) => creates object from given model
