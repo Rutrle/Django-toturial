@@ -4,8 +4,10 @@ from .models import Product
 from .forms import ProductForm, RawProductForm
 # Create your views here.
 
-def dynamic_lookup_view(request):
+def dynamic_lookup_view(request, my_id):
+    obj = Product.objects.get(id=my_id)
     context={
+        "object":obj
 
     }
     return render(request, "products/product_detail.html", context)
