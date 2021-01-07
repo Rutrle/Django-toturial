@@ -19,12 +19,13 @@ from django.urls import path, include
 # better to import specific view
 from pages.views import home_view, contact_view, about_view, social_view
 from products.views import product_detail_view, product_create_view, render_initial_data, dynamic_lookup_view, product_delete_view, product_list_view, product_update_view
-from Blog.views import create_article, article_list_view
+from Blog.views import create_article, article_list_view, article_detail_view
 
 
 urlpatterns = [
     path('blog/', create_article),
     path('blog/articles', article_list_view),
+    path('blog/articles/<int:my_id>/', article_detail_view),
 
     path('products/', include('products.urls')),
 

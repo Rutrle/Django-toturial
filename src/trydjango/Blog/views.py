@@ -22,3 +22,12 @@ def article_list_view(request):
         "object_list": queryset
     }
     return render(request, "Article_list.html", context)
+
+
+def article_detail_view(request, my_id):
+    obj = Article.objects.get(id=my_id)
+
+    context = {
+        'object': obj
+    }
+    return render(request, "Article_detail.html", context)
