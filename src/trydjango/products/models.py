@@ -10,4 +10,4 @@ class Product(models.Model):
     featured = models.BooleanField(default = False) # new field, possibilities: 1) delete database and make new one, 2) null = True -> in all old data this field will be empty 3) default = True => sets default value  to the value given 4) give info to python during  making migrations
 
     def get_absolute_url(self):
-        return reverse("product-detail", kwargs={"my_id":self.id})
+        return reverse("products:product-detail", kwargs={"my_id":self.id})
