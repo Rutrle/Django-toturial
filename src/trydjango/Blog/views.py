@@ -1,6 +1,13 @@
 from django.shortcuts import render
 from .forms import CreateArticleForm
 from .models import Article
+from django.views.generic import(
+    CreateView,
+    DetailView,
+    ListView,
+    UpdateView,
+    DeleteView
+)
 # Create your views here.
 
 
@@ -31,3 +38,12 @@ def article_detail_view(request, my_id):
         'object': obj
     }
     return render(request, "Article_detail.html", context)
+
+
+# same function as article_list_view
+class ArticleListView(ListView):
+
+    template_name = 'article_class_list.html'
+
+    # going to loo automatically for <blog>/<modelname>_list.html
+    queryset = Article.objects.all()
