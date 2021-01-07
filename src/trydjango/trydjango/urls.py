@@ -23,10 +23,9 @@ from Blog.views import create_article, article_list_view, article_detail_view
 
 
 urlpatterns = [
-    path('blog/', create_article),
-    path('blog/articles', article_list_view),
-    path('blog/articles/<int:my_id>/', article_detail_view),
 
+
+    path('blog/', include('Blog.urls')),
     path('products/', include('products.urls')),
 
 
