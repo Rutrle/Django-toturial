@@ -8,7 +8,7 @@ class CreateArticleForm(forms.ModelForm):
         attrs={"placeholder": "Your title"}))
     content = forms.CharField(label='', widget=forms.Textarea(
         attrs={"rows": 20, "cols": 120, "placeholder": "Content of your article"}))
-    active = forms.BooleanField(label='Active?')
+    active = forms.BooleanField(label='Active?', required=False)
 
     class Meta:
         model = Article
