@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from .forms import CreateArticleForm
+from django.shortcuts import render, get_object_or_404
+from .forms import CreateArticleForm, ArticleModelForm
 from .models import Article
 from django.views.generic import(
     CreateView,
@@ -43,7 +43,27 @@ def article_detail_view(request, my_id):
 # same function as article_list_view
 class ArticleListView(ListView):
 
-    template_name = 'article_class_list.html'
+    template_name = 'article_class_list.html'  # overrides generic template address
+
+    # going to loo automatically for <blog>/<modelname>_list.html
+    queryset = Article.objects.all()
+
+
+class ArticleDetailView(DetailView):
+
+    # overrides generic template address
+    template_name = 'article_class_detail.html'
+
+    queryset = Article.objects.all()
+
+    def get_object(self):
+        id_ = self.kwargs.get("id")
+        return get_object_or_404(Article, id=id_)
+
+
+class ArticleCreateView(CreateView):
+
+    template_name = 'article_class_create.html'  # overrides generic template address
 
     # going to loo automatically for <blog>/<modelname>_list.html
     queryset = Article.objects.all()

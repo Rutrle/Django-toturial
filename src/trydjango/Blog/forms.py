@@ -17,3 +17,16 @@ class CreateArticleForm(forms.ModelForm):
             'content',
             'active',
         ]
+
+
+class ArticleModelForm(forms.ModelForm):
+    class Meta:
+        model = Article
+        fields = [
+            'title',
+            'content',
+            'active',
+        ]
+
+
+
