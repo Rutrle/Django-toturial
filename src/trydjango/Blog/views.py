@@ -77,7 +77,6 @@ class ArticleCreateView(CreateView):
 
 
 class ArticleUpdateView(UpdateView):
-
     # overrides generic template address
     template_name = 'article_class_create.html'
     form_class = ArticleModelForm
@@ -85,6 +84,10 @@ class ArticleUpdateView(UpdateView):
 
     # going to loo automatically for <blog>/<modelname>_list.html
     queryset = Article.objects.all()
+
+    def get_object(self):
+        id_ = self.kwargs.get("id")
+        return get_object_or_404(Article, id=id_)
 
     def form_valid(self, form):
         print(form.cleaned_data)
