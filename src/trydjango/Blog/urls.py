@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import create_article, article_list_view, article_detail_view, ArticleListView, ArticleDetailView
+from .views import create_article, article_list_view, article_detail_view, ArticleListView, ArticleDetailView, ArticleCreateView
 
 app_name = 'Blog'
 urlpatterns = [
@@ -9,5 +9,7 @@ urlpatterns = [
 
     path('articleclass', ArticleListView.as_view(), name='ArticleListView'),
     path('articleclass/<int:id>/', ArticleDetailView.as_view(),
-         name='ArticleDetailView')  # pk is default argument here standing for primary key => previously instead of id
+         name='ArticleDetailView'),  # pk is default argument here standing for primary key => previously instead of id
+    path('articleclass/create/', ArticleCreateView.as_view(),
+         name='ArticleCreatetView'),
 ]

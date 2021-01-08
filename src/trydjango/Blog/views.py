@@ -63,7 +63,29 @@ class ArticleDetailView(DetailView):
 
 class ArticleCreateView(CreateView):
 
-    template_name = 'article_class_create.html'  # overrides generic template address
+    # overrides generic template address
+    template_name = 'article_class_create.html'
+    form_class = ArticleModelForm
+    success_url = '/'  # overiding where the django will take me afterwards
 
     # going to loo automatically for <blog>/<modelname>_list.html
     queryset = Article.objects.all()
+
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return super().form_valid(form)
+
+
+class ArticleUpdateView(UpdateView):
+
+    # overrides generic template address
+    template_name = 'article_class_create.html'
+    form_class = ArticleModelForm
+    success_url = '/'  # overiding where the django will take me afterwards
+
+    # going to loo automatically for <blog>/<modelname>_list.html
+    queryset = Article.objects.all()
+
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return super().form_valid(form)
