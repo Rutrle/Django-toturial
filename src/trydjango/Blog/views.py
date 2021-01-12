@@ -1,4 +1,6 @@
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
+
 from .forms import CreateArticleForm, ArticleModelForm
 from .models import Article
 from django.views.generic import(
@@ -100,7 +102,12 @@ class ArticleDeleteView(DeleteView):
     template_name = 'article_class_delete.html'
 
     queryset = Article.objects.all()
+    # overiding where the django will take me afterwards, reasonw are too many apps
+    success_url = 'http://127.0.0.1:8000/blog/articleclass/'
 
     def get_object(self):
         id_ = self.kwargs.get("id")
         return get_object_or_404(Article, id=id_)
+
+    def get_success_url(self):
+        return reverse('blog:ArticleListView')
