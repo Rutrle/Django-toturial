@@ -115,3 +115,8 @@ class ArticleDeleteView(DeleteView):
 
 def my_fbv(request, *args, **kwargs):  # basic class
     return render(request, 'about.html', {})
+
+
+class CourseView(View):
+    def get(self, request, *args,  **kwargs):
+        return render(request, 'about.html', {})
