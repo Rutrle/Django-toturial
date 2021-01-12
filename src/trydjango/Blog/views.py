@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
-
+from django.views import View
 from .forms import CreateArticleForm, ArticleModelForm
 from .models import Article
 from django.views.generic import(
@@ -111,3 +111,7 @@ class ArticleDeleteView(DeleteView):
 
     def get_success_url(self):
         return reverse('blog:ArticleListView')
+
+
+def my_fbv(request, *args, **kwargs):  # basic class
+    return render(request, 'about.html', {})

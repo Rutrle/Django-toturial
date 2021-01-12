@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import create_article, article_list_view, article_detail_view, ArticleListView, ArticleDetailView, ArticleCreateView, ArticleUpdateView, ArticleDeleteView
+from .views import create_article, article_list_view, article_detail_view, ArticleListView, ArticleDetailView, ArticleCreateView, ArticleUpdateView, my_fbv, ArticleDeleteView
 
 app_name = 'blog'
 urlpatterns = [
@@ -16,4 +16,6 @@ urlpatterns = [
          ArticleUpdateView.as_view(), name='article-update'),
     path('articleclass/<int:id>/delete/',
          ArticleDeleteView.as_view(), name='article-delete'),
+    path('about/',
+         my_fbv, name='article-delete'),
 ]
