@@ -9,7 +9,8 @@ from .views import (create_article,
                     my_fbv,
                     ArticleDeleteView,
                     CourseView,
-                    CourseListView
+                    CourseListView,
+                    MyListView
                     )
 
 app_name = 'blog'

@@ -140,3 +140,5 @@ class CourseListView(View):
     def get(self, request, *args, **kwargs):
         context = {'object_list': self.get_queryset()}
         return render(request, self.template_name, context)
+
+
