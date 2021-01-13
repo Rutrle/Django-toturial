@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.views import View
 from .forms import CreateArticleForm, ArticleModelForm
-from .models import Article
+from .models import Article, Course
 from django.views.generic import(
     CreateView,
     DetailView,
@@ -10,6 +10,7 @@ from django.views.generic import(
     UpdateView,
     DeleteView
 )
+
 # Create your views here.
 
 
@@ -118,5 +119,12 @@ def my_fbv(request, *args, **kwargs):  # basic class
 
 
 class CourseView(View):
-    def get(self, request, *args,  **kwargs):
-        return render(request, 'about.html', {})
+    template_name = "course_detail.html"
+
+    def get(self, request, id=None, *args,  **kwargs):
+        context = {}
+        if id is not None:
+            obj = get_object_or_404(Course, id=id)
+            context['object'] = obj
+
+        return render(request, self.template_name, context)

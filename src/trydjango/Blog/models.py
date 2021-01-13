@@ -11,3 +11,7 @@ class Article(models.Model):
     def get_absolute_url(self):
         # return reverse("blog", kwargs={"my_id": self.id})
         return (f"articles/{self.id}/")
+
+
+class Course(models.Model):
+    title = models.CharField(max_length=120)

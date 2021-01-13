@@ -28,6 +28,8 @@ urlpatterns = [
          ArticleDeleteView.as_view(), name='article-delete'),
     # path('about/',
     #    my_fbv, name='article-delete'),
-    path('about/',
-         CourseView.as_view(), name='article-delete'),
+    path('courses/',
+         CourseView.as_view(template_name='about.html'), name='article-delete'),
+    path('courses/<int:id>/',
+         CourseView.as_view(template_name="course_detail.html"), name='article-delete'),
 ]
