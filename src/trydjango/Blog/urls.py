@@ -8,7 +8,8 @@ from .views import (create_article,
                     ArticleUpdateView,
                     my_fbv,
                     ArticleDeleteView,
-                    CourseView
+                    CourseView,
+                    CourseListView
                     )
 
 app_name = 'blog'
@@ -32,4 +33,6 @@ urlpatterns = [
          CourseView.as_view(template_name='about.html'), name='article-delete'),
     path('courses/<int:id>/',
          CourseView.as_view(template_name="course_detail.html"), name='article-delete'),
+    path('courses/list/',
+         CourseListView.as_view(), name='courses-list'),
 ]
