@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.views import View
-from .forms import CreateArticleForm, ArticleModelForm
+from .forms import CreateArticleForm, ArticleModelForm, CourseModelForm
 from .models import Article, Course
 from django.views.generic import(
     CreateView,
@@ -142,3 +142,22 @@ class CourseListView(View):
         return render(request, self.template_name, context)
 
 
+class CourseCreateView(View):
+    template_name = "course_create.html"
+
+    def get(self, request, *args,  **kwargs):
+        form = CourseModelForm()
+        context = {"form": form}
+
+        return render(request, self.template_name, context)
+
+    # post method
+
+    def post(self, request, *args,  **kwargs):
+
+        form = CourseModelForm(request.POST)
+        if form.is_valid():
+            form.save()
+        context = {"form": form}
+
+        return render(request, self.template_name, context)

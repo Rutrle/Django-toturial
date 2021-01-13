@@ -10,7 +10,7 @@ from .views import (create_article,
                     ArticleDeleteView,
                     CourseView,
                     CourseListView,
-                    MyListView
+                    CourseCreateView
                     )
 
 app_name = 'blog'
@@ -36,4 +36,7 @@ urlpatterns = [
          CourseView.as_view(template_name="course_detail.html"), name='article-delete'),
     path('courses/list/',
          CourseListView.as_view(), name='courses-list'),
+    path('courses/create/',
+         CourseCreateView.as_view(), name='courses-create'),
+
 ]

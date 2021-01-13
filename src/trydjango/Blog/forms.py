@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Article
+from .models import Article, Course
 
 
 class CreateArticleForm(forms.ModelForm):
@@ -29,4 +29,7 @@ class ArticleModelForm(forms.ModelForm):
         ]
 
 
-
+class CourseModelForm(forms.ModelForm):
+    class Meta:
+        model = Course
+        fields = ['title']
